@@ -1,4 +1,4 @@
-ParticleSimulation: \
+/home/catomaior/projects/n_particle_simulation/bin/ParticleSimulation: \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crt1.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/crti.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o \

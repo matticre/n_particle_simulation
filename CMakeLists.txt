@@ -61,4 +61,5 @@ add_executable(ParticleSimulation ${SOURCE_FILES})
 
 # Optionally, you can set the output directory for the executable.
 # This places the executable inside the 'bin' directory.
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+set_target_properties(ParticleSimulation PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
