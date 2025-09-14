@@ -1,0 +1,3 @@
+/home/catomaior/projects/n_particle_simulation/build/CMakeFiles/ParticleSimulation.dir
+/home/catomaior/projects/n_particle_simulation/build/CMakeFiles/edit_cache.dir
+/home/catomaior/projects/n_particle_simulation/build/CMakeFiles/rebuild_cache.dir
