@@ -16,7 +16,24 @@ Vector3D& Vector3D::operator-=(const Vector3D &vec) {
     return *this;
 }
 
-std::ostream& operator<< (std::ostream& os, Vector3D vec){
+float Vector3D::Dot(Vector3D &vec){
+    float x = this->m_x * vec.m_x;
+    float y = this->m_y * vec.m_y;
+    float z = this->m_z * vec.m_z;
+
+    return x + y + z;
+}
+
+Vector3D Vector3D::VecProd(Vector3D &vec){
+    float x = this->m_y * vec.m_z - this->m_z * vec.m_y;
+    float y = this->m_z * vec.m_x - this->m_x * vec.m_z;
+    float z = this->m_x * vec.m_y - this->m_y * vec.m_x;
+
+    return Vector3D(x,y,z);
+}
+
+
+std::ostream& operator<< (std::ostream& os, const Vector3D &vec){
     os << "(" << vec.Get_X()
        << "," << vec.Get_Y() 
        << "," << vec.Get_Z() << ")";
