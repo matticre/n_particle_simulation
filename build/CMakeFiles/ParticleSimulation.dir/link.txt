@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/ParticleSimulation.dir/link.d CMakeFiles/ParticleSimulation.dir/src/main.cpp.o CMakeFiles/ParticleSimulation.dir/src/Particle.cpp.o CMakeFiles/ParticleSimulation.dir/src/Vector3D.cpp.o -o /home/catomaior/projects/n_particle_simulation/bin/ParticleSimulation
