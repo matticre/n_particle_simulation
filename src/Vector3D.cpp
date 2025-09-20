@@ -16,18 +16,18 @@ Vector3D& Vector3D::operator-=(const Vector3D &vec) {
     return *this;
 }
 
-float Vector3D::Dot(Vector3D &vec){
-    float x = this->m_x * vec.m_x;
-    float y = this->m_y * vec.m_y;
-    float z = this->m_z * vec.m_z;
+double Vector3D::Dot(Vector3D &vec){
+    double x = this->m_x * vec.m_x;
+    double y = this->m_y * vec.m_y;
+    double z = this->m_z * vec.m_z;
 
     return x + y + z;
 }
 
 Vector3D Vector3D::VecProd(Vector3D &vec){
-    float x = this->m_y * vec.m_z - this->m_z * vec.m_y;
-    float y = this->m_z * vec.m_x - this->m_x * vec.m_z;
-    float z = this->m_x * vec.m_y - this->m_y * vec.m_x;
+    double x = this->m_y * vec.m_z - this->m_z * vec.m_y;
+    double y = this->m_z * vec.m_x - this->m_x * vec.m_z;
+    double z = this->m_x * vec.m_y - this->m_y * vec.m_x;
 
     return Vector3D(x,y,z);
 }
@@ -54,4 +54,12 @@ Vector3D operator-(const Vector3D& vec1, const Vector3D& vec2){
     result -= vec2;
 
     return result;
+}
+
+Vector3D operator*(const double&  alpha, const Vector3D& vec) {
+    return Vector3D(alpha * vec.Get_X(),alpha * vec.Get_Y(), alpha * vec.Get_Z());
+}
+                                                                              
+Vector3D operator*(const Vector3D& vec, const double& alpha) {
+    return Vector3D(alpha * vec.Get_X(),alpha * vec.Get_Y(), alpha * vec.Get_Z());
 }

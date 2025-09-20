@@ -54,10 +54,16 @@ set(SOURCE_FILES
         -Wzero-as-null-pointer-constant # Warn about `0` used as `nullptr`
     )
 
+# Adding external libraries to link
+find_package(SFML COMPONENTS graphics window system REQUIRED)
+
 
 # Add the executable. The first argument is the name of the executable to be created.
 # The following arguments are the source files that will be compiled and linked.
 add_executable(ParticleSimulation ${SOURCE_FILES})
+
+
+target_link_libraries(ParticleSimulation sfml-graphics)
 
 # Optionally, you can set the output directory for the executable.
 # This places the executable inside the 'bin' directory.
