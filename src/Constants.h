@@ -8,7 +8,7 @@ constexpr double G   = 1;
 constexpr double REG = 0.1;
 
 constexpr double SUN_RADIUS_AU     = 0.0;
-constexpr double MERCURY_RADIUS_AU = 0.25;
+constexpr double MERCURY_RADIUS_AU = 0.005;
 constexpr double VENUS_RADIUS_AU   = 0.5;
 constexpr double EARTH_RADIUS_AU   = 0.75;
 constexpr double MARS_RADIUS_AU    = 1.;

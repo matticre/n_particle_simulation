@@ -8,19 +8,40 @@
 #include <vector>
 #include <thread>
 #include <numeric>
+#include <random>
 
 void InitializeParticles(std::vector<Particle> &particles){
-    Particle Sun(0, 0, 0, 0, 0, 0, SUNMASS, 30.0);
-    Particle Mercury(MERCURY_RADIUS_AU, 0, 0, 0, MERCURY_SPEED, 0, MERCURYMASS, 10.0);
-    Particle Venus(VENUS_RADIUS_AU, 0, 0, 0, VENUS_SPEED, 0, VENUSMASS, 10.0);
-    Particle Earth(EARTH_RADIUS_AU, 0, 0, 0, EARTH_SPEED, 0, EARTHMASS, 10.0);
-    Particle Mars(MARS_RADIUS_AU, 0, 0, 0, MARS_SPEED, 0,  MARSMASS, 10.0);
+    
+    std::random_device rd;
+    std::mt19937 gen(rd()); 
 
-    particles.push_back(Sun);
-    particles.push_back(Mercury);
-    particles.push_back(Venus);
-    particles.push_back(Earth);
-    particles.push_back(Mars);
+    std::uniform_real_distribution<> pos_dist(-5.0, 5.0);
+    std::uniform_real_distribution<> vel_dist(-0.5, 0.5); 
+    std::uniform_real_distribution<> mass_dist(0.1, 0.5); 
+    
+    const double PARTICLE_RADIUS = 5.0; 
+    const int NUM_PARTICLES = 1000;
+
+    for (size_t i = 0; i < NUM_PARTICLES; ++i){
+        
+        if (i == 0) {
+            Particle part(0, 0, 0, 0, 0, 0, SUNMASS, 30.0);
+            particles.push_back(part);
+        } else {
+            double x = pos_dist(gen);
+            double y = pos_dist(gen);
+            double z = pos_dist(gen);
+
+            double vx = vel_dist(gen);
+            double vy = vel_dist(gen);
+            double vz = vel_dist(gen);
+            
+            double mass = mass_dist(gen);
+
+            Particle part(x, y, z, vx, vy, vz, mass, PARTICLE_RADIUS);
+            particles.push_back(part);
+        }
+    }
 }
 
 // @brief Draw particles on window

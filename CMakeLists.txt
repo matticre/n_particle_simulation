@@ -57,6 +57,7 @@ set(SOURCE_FILES
 
 # Adding external libraries to link
 find_package(SFML COMPONENTS graphics window system REQUIRED)
+find_package(OpenMP REQUIRED)
 
 
 # Add the executable. The first argument is the name of the executable to be created.
@@ -64,7 +65,7 @@ find_package(SFML COMPONENTS graphics window system REQUIRED)
 add_executable(ParticleSimulation ${SOURCE_FILES})
 
 
-target_link_libraries(ParticleSimulation sfml-graphics)
+target_link_libraries(ParticleSimulation sfml-graphics OpenMP::OpenMP_CXX )
 
 # Optionally, you can set the output directory for the executable.
 # This places the executable inside the 'bin' directory.
