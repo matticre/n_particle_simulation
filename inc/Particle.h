@@ -33,7 +33,7 @@ class Particle{
         double GetMass(){ return m_mass;};
         
         // Mass setter
-        void SetMass(double &mass){m_mass = mass;};
+        void SetMass(double mass){m_mass = mass;};
 
         // Radius getter
         double GetRadius(){ return m_radius;};
@@ -42,25 +42,25 @@ class Particle{
         void SetRadius(double &radius){m_radius = radius;};
 
         // Position getter
-        Vector3D& GetPosition(){ return m_position;};
+        const Vector3D& GetPosition() const{ return m_position;};
         
         // Position setter
         void SetPosition(const Vector3D &position){m_position = position;};
 
         // Velocity getter
-        Vector3D& GetVelocity(){ return m_velocity;};
+        const Vector3D& GetVelocity() const { return m_velocity;};
         
         // Velocity setter
         void SetVelocity(const Vector3D &velocity){m_velocity = velocity;};
 
         // Acceleration getter
-        Vector3D& GetAcceleration(){ return m_acceleration;};
+        const Vector3D& GetAcceleration() const { return m_acceleration;};
         
         // Acceleration setter
         void SetAcceleration(const Vector3D &acceleration){m_acceleration = acceleration;};
 
 
-        friend std::ostream& operator<<(std::ostream &os, Particle &particle);
+        friend std::ostream& operator<<(std::ostream &os, const Particle &particle);
 
     private:
         Vector3D m_position;

@@ -24,23 +24,21 @@ public:
 
     // @brief Vector magnitude
     // @return Return the magnitude of the vector
-    double GetMag() { return sqrt(m_x*m_x + m_y*m_y + m_z*m_z); };
+    double GetMag () const { return sqrt(m_x*m_x + m_y*m_y + m_z*m_z); };
 
     // @brief Dot product
     // @return Return the dot product of two vectors
-    double Dot(const Vector3D &vec);
+    double Dot (const Vector3D &vec) const ;
 
     // @brief Vector product
     // @return Return the vector product of two vectors
-    Vector3D VecProd(const Vector3D &vec);
+    Vector3D Cross (const Vector3D &vec) const ;
 
 
     // Operator overloading
     Vector3D& operator+=(const Vector3D& vec);
     Vector3D& operator-=(const Vector3D& vec);
 
-    Vector3D& operator+=(const Vector3D& vec) const;
-    
     friend std::ostream& operator<< (std::ostream& os, const Vector3D &vec);
     
 private:

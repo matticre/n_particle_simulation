@@ -25,6 +25,7 @@ set(SOURCE_FILES
     src/main.cpp
     src/Particle.cpp
     src/Vector3D.cpp
+    src/OdeSolver.cpp
 )
 
 

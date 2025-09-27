@@ -16,7 +16,7 @@ Vector3D& Vector3D::operator-=(const Vector3D &vec) {
     return *this;
 }
 
-double Vector3D::Dot(Vector3D &vec){
+double Vector3D::Dot (const Vector3D &vec) const{
     double x = this->m_x * vec.m_x;
     double y = this->m_y * vec.m_y;
     double z = this->m_z * vec.m_z;
@@ -24,7 +24,7 @@ double Vector3D::Dot(Vector3D &vec){
     return x + y + z;
 }
 
-Vector3D Vector3D::VecProd(Vector3D &vec){
+Vector3D Vector3D::Cross (const Vector3D &vec) const {
     double x = this->m_y * vec.m_z - this->m_z * vec.m_y;
     double y = this->m_z * vec.m_x - this->m_x * vec.m_z;
     double z = this->m_x * vec.m_y - this->m_y * vec.m_x;
