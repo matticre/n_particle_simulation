@@ -1,3 +1,14 @@
+/**
+ * This class contains the attributes and the methods of the fundamental simulation element: 
+ * the particles. It has five main attributes:
+ * - position
+ * - velocity
+ * - acceleration 
+ * - mass
+ * - radius
+ * The former four are physical quantities necessary to evolve the system dynamics. The latter
+ * instead is necessary only to draw the particle on screen.
+ */
 #pragma once
 
 #include "Vector3D.h"
@@ -59,7 +70,7 @@ class Particle{
         // Acceleration setter
         void SetAcceleration(const Vector3D &acceleration){m_acceleration = acceleration;};
 
-
+        // Overloading of operator << in order to make use of std::cout
         friend std::ostream& operator<<(std::ostream &os, const Particle &particle);
 
     private:

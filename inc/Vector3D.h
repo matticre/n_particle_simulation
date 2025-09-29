@@ -1,3 +1,6 @@
+/**
+ * In this class I reimplemented the 3D vector with its main algebric properties.
+ */
 #pragma once
 
 #include <cmath>
@@ -35,10 +38,13 @@ public:
     Vector3D Cross (const Vector3D &vec) const ;
 
 
-    // Operator overloading
+    // Overloading of operator +=
     Vector3D& operator+=(const Vector3D& vec);
+    
+    // Overloading of operator -=
     Vector3D& operator-=(const Vector3D& vec);
 
+    // Overloading of operator << in order to make use of std::cout 
     friend std::ostream& operator<< (std::ostream& os, const Vector3D &vec);
     
 private:
@@ -49,8 +55,14 @@ private:
     
 };
 
-// Operator overloading
+// Overloading of operator +
 Vector3D operator+(const Vector3D& vec1, const Vector3D& vec2);
+
+// Overloading of operator -
 Vector3D operator-(const Vector3D& vec1, const Vector3D& vec2);
+
+// Overloading of operator * for the case scalar * vector
 Vector3D operator*(const double&  alpha, const Vector3D& vec);
+
+// Overloading of operator * for the case vector * scalar
 Vector3D operator*(const Vector3D& vec, const double& alpha);

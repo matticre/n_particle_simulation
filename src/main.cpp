@@ -10,6 +10,10 @@
 #include <numeric>
 #include <random>
 
+/**
+ * @brief Particle initialization. I extract the particle position, velocity and mass with
+ * uniform distributions. The only exception is the main particle which is located at the center
+ */
 void InitializeParticles(std::vector<Particle> &particles){
     
     std::random_device rd;
@@ -25,7 +29,7 @@ void InitializeParticles(std::vector<Particle> &particles){
     for (size_t i = 0; i < NUM_PARTICLES; ++i){
         
         if (i == 0) {
-            Particle part(0, 0, 0, 0, 0, 0, SUNMASS, 30.0);
+            Particle part(0, 0, 0, 0, 0, 0, MAINMASS, 30.0);
             particles.push_back(part);
         } else {
             double x = pos_dist(gen);
@@ -44,7 +48,10 @@ void InitializeParticles(std::vector<Particle> &particles){
     }
 }
 
-// @brief Draw particles on window
+/** 
+ * @brief Draw particles on window exploting SFML library. Since the ODE solver uses a different scale for the 
+ * coordinate system I adapt them to the screen resolution through a scale factor.
+ */
 void DrawParticles(std::vector<Particle> &particles, sf::RenderWindow &window){
     for (auto& particle : particles){
         sf::CircleShape shape(static_cast<float>(particle.GetRadius()));
@@ -56,18 +63,29 @@ void DrawParticles(std::vector<Particle> &particles, sf::RenderWindow &window){
     }
 }
 
+/**
+ * @brief Main function consisting of: \n
+ * - a loop running till the window is open \n
+ * - physics evolution step \n
+ * - drawing graphysics step \n
+ */
 int main (){
 
+    // Window definition
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "N-particle simulation");
     window.setFramerateLimit(30);
 
+    // Particles initialization
     std::vector<Particle> particles;
     InitializeParticles(particles);
+    
+    // Ordinary differential equation solver
     OdeSolver solveSystem;
 
     while(window.isOpen()){
+        
+        // check if the is closed
         sf::Event event;
-
         while (window.pollEvent(event)){
             if (event.type == sf::Event::Closed)
                 window.close();
@@ -77,13 +95,13 @@ int main (){
             }
         }
 
+        // Evolution of particle dynamics
         solveSystem.EvolveSystem(particles);
 
-
+        // Drawing the updated particles position
         window.clear(sf::Color::Black);
         DrawParticles(particles, window);
         window.display();
-        
     }
 
     return 0;
