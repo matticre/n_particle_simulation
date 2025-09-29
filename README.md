@@ -20,7 +20,6 @@ Use the `build.sh` script to create the necessary CMake files and compile the pr
 ### 2. Run the Simulation
 
 Use the run.sh script to execute the simulation. By default, this script explicitly sets the OpenMP environment variable to run the simulation with 10 threads.
-# Sets OMP_NUM_THREADS to 10 and runs the executable
 
 ```
 ./run.sh
@@ -29,16 +28,16 @@ Use the run.sh script to execute the simulation. By default, this script explici
 To change the number of threads, modify the export ```OMP_NUM_THREADS``` line in ```run.sh```.
 
 
-### Results
+## Results
 
 At first, I tried with ```N=10``` particles using both a single thread and ten threads. I perceived almost no difference between the two simulations.
 
 Then I tried with ```N=1000```. In this case, the ```O(N2)``` loop sensibly increased the number of iterations. The simulation run with a single thread seemed almost static, while with ten threads, the particles' motions were clearly visible.
 
-### Possible Further Implementations
+## Possible Further Implementations
 
-    *It would be possible to use a ***DOP (Data-Oriented Programming)*** paradigm to achieve even better performance.
+* It would be possible to use a ***DOP (Data-Oriented Programming)*** paradigm to achieve even better performance.
 
-    *It would be possible to try to accelerate the simulation by exploiting a ***GPU with CUDA*** acceleration.
+* It would be possible to try to accelerate the simulation by exploiting a ***GPU with CUDA*** acceleration.
 
-    *Implement better and more quantitative performance metrics, though this is not that interesting right now.
+* Implement better and more quantitative performance metrics, though this is not that interesting right now.
